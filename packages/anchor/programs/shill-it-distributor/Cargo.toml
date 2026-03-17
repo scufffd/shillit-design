@@ -1,0 +1,17 @@
+[package]
+name = "shill-it-distributor"
+version = "0.1.0"
+description = "Merkle fee distributor for holder claims"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "shill_it_distributor"
+
+[features]
+no-entrypoint = []
+init-if-needed = ["anchor-lang/init-if-needed"]
+idl-build = ["anchor-lang/idl-build"]
+
+[dependencies]
+anchor-lang = { version = "0.30", features = ["init-if-needed"] }

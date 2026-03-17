@@ -1,0 +1,10 @@
+{
+  "description": "Shill It DBC config – use with Meteora launch.meteora.ag or DBC SDK. Replace with your POOL_CONFIG_KEY values.",
+  "quoteToken": "So11111111111111111111111111111111111111112",
+  "curveType": "dynamic",
+  "migrationTargetSol": 85,
+  "partnerTradingFeeBps": 100,
+  "creatorTradingFeeBps": 50,
+  "partnerFeeClaimer": "YOUR_SQUADS_MULTISIG_PUBKEY",
+  "tokenStandard": "Token2022"
+}

@@ -1,0 +1,16 @@
+[workspace]
+members = [
+    "programs/shill-it-registry",
+    "programs/shill-it-cto",
+    "programs/shill-it-distributor",
+]
+resolver = "2"
+
+[profile.release]
+overflow-checks = true
+
+# constant_time_eq 0.4.2 requires edition2024; SBF Cargo is 1.79. Use vendored stub.
+[patch.crates-io]
+constant_time_eq = { path = "patches/constant_time_eq" }
+
+# Work around crates requiring newer Cargo (edition2024).

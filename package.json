@@ -1,0 +1,27 @@
+{
+  "name": "shill-it-launchpad",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm --filter @shill-it/web dev",
+    "build": "pnpm --filter @shill-it/web build",
+    "build:anchor": "pnpm --filter @shill-it/anchor build",
+    "test:anchor": "pnpm --filter @shill-it/anchor test",
+    "bagworker:detect": "ts-node --project scripts/tsconfig.json scripts/add-tracked-token-and-run-detect.ts",
+    "seed:token": "node scripts/seed-tracked-token.js",
+    "create-dbc-config": "node scripts/create-dbc-config.mjs"
+  },
+  "devDependencies": {
+    "@meteora-ag/dynamic-bonding-curve-sdk": "^1.5.5",
+    "@solana/web3.js": "^1.95.0",
+    "@supabase/supabase-js": "^2.45.0",
+    "@types/node": "^20.0.0",
+    "dotenv": "^16.6.1",
+    "pnpm": "^9.0.0",
+    "ts-node": "^10.9.2"
+  },
+  "packageManager": "pnpm@9.0.0",
+  "engines": {
+    "node": ">=18.17.0"
+  }
+}

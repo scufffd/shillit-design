@@ -1,0 +1,59 @@
+# Dependencies
+node_modules
+.pnpm-store
+
+# Env and secrets (never commit)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.*.local
+**/.env
+**/.env.local
+*.pem
+config/config-keypair.json
+config/keypair.json
+**/*-keypair.json
+.data/
+
+# Build
+dist
+.anchor
+target
+.next
+out
+*.tsbuildinfo
+
+# IDE
+.idea
+.vscode
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Test
+coverage
+.nyc_output
+
+# Anchor / Solana
+test-ledger
+.anchor
+
+# Supabase
+supabase/.branches
+supabase/.temp
+
+# Uploads (use R2 in prod)
+uploads/
+
+# SQLite (local dev)
+.data/

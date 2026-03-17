@@ -1,0 +1,23 @@
+[features]
+seeds = true
+skip-lint = false
+
+[programs.localnet]
+shill_it_registry = "Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS"
+shill_it_cto = "Ce6TQqeWD9gTmq5Mn2VT5t6oU7L5L3NnQ7j2vH8kP4mR"
+shill_it_distributor = "2R7aLoBFZDDVLUA3wJPKfkz7KApsox3Tqf8Py7GGeHSL"
+
+[programs.devnet]
+shill_it_registry = "Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS"
+shill_it_cto = "Ce6TQqeWD9gTmq5Mn2VT5t6oU7L5L3NnQ7j2vH8kP4mR"
+shill_it_distributor = "2R7aLoBFZDDVLUA3wJPKfkz7KApsox3Tqf8Py7GGeHSL"
+
+[registry]
+url = "https://api.apr.dev"
+
+[provider]
+cluster = "devnet"
+wallet = "~/.config/solana/id.json"
+
+[scripts]
+test = "pnpm exec ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"

@@ -1,0 +1,10 @@
+[package]
+name = "constant_time_eq"
+version = "0.4.2"
+edition = "2021"
+description = "Compares two equal-sized byte strings in constant time (vendored for SBF build)"
+license = "Apache-2.0 OR MIT"
+
+[features]
+default = []
+std = []

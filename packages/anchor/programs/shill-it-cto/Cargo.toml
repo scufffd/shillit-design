@@ -1,0 +1,20 @@
+[package]
+name = "shill-it-cto"
+version = "0.1.0"
+description = "Shill It CTO (Community Takeover) + Treasury Vault"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+
+[features]
+no-entrypoint = []
+no-idl = []
+no-log-ix-name = []
+cpi = ["no-entrypoint"]
+default = []
+idl-build = ["anchor-spl/idl-build", "anchor-lang/idl-build"]
+
+[dependencies]
+anchor-lang = { version = "0.30", features = ["init-if-needed"] }
+anchor-spl = { version = "0.30", features = ["token"] }
