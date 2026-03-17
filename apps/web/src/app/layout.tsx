@@ -6,6 +6,7 @@ import "./globals.css";
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-display",
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -21,43 +22,37 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`dark ${spaceGrotesk.variable}`}>
-      <body className="min-h-screen bg-shill-dark font-sans text-white antialiased">
-        <header className="fixed left-0 right-0 top-0 z-50 border-b border-white/5 bg-shill-dark/90 backdrop-blur-md">
-          <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-4 py-3 sm:px-6">
-            <a href="/" className="flex shrink-0 items-center gap-2">
-              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-shill-yellow text-shill-dark sm:h-9 sm:w-9">
+      <body className="min-h-screen bg-[#0A0A0A] font-sans text-[#FAFAFA] antialiased">
+        <header className="fixed left-0 right-0 top-0 z-50 border-b border-[#222] bg-[#0A0A0A]/95 backdrop-blur-md">
+          <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-4 py-3.5 sm:px-6">
+
+            <a href="/" className="flex shrink-0 items-center gap-2.5 group">
+              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-shill-lime text-[#0A0A0A] text-base shadow-hard sm:h-9 sm:w-9 transition-all group-hover:shadow-glow-lime">
                 🚀
               </span>
-              <span className="text-lg font-bold tracking-tight sm:text-xl">Shill It</span>
+              <span className="text-base font-black uppercase tracking-tight sm:text-lg">
+                Shill<span className="text-shill-lime">It</span>
+              </span>
             </a>
-            <nav className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1 text-sm sm:gap-x-6">
-              <a href="/#how" className="text-white/75 transition hover:text-white">
-                How it works
-              </a>
-              <a href="/campaigns" className="text-white/75 transition hover:text-white">
-                Bagworkers
-              </a>
-              <a href="/leaderboard" className="text-white/75 transition hover:text-white">
-                Leaderboard
-              </a>
-              <a href="/cto" className="text-white/75 transition hover:text-white">
-                CTO
-              </a>
-              <a href="/dashboard" className="text-white/75 transition hover:text-white">
-                Dashboard
-              </a>
-              <a href="/deployer" className="text-white/75 transition hover:text-white">
-                Deployer
-              </a>
+
+            <nav className="hidden md:flex items-center gap-x-6 text-[11px] font-bold uppercase tracking-widest text-[#888]">
+              <a href="/#how" className="transition hover:text-white">How it works</a>
+              <a href="/campaigns" className="transition hover:text-white">Bagworkers</a>
+              <a href="/leaderboard" className="transition hover:text-white">Leaderboard</a>
+              <a href="/cto" className="transition hover:text-white">CTO</a>
+              <a href="/dashboard" className="transition hover:text-white">Dashboard</a>
+              <a href="/deployer" className="transition hover:text-white">Deployer</a>
             </nav>
+
             <a
               href="/launch"
-              className="shrink-0 rounded-full bg-shill-yellow px-5 py-2 text-sm font-bold uppercase tracking-wider text-shill-dark transition hover:bg-shill-yellow/90"
+              className="shrink-0 rounded-2xl bg-shill-lime px-5 py-2.5 text-[11px] font-black uppercase tracking-widest text-[#0A0A0A] shadow-hard transition hover:shadow-glow-lime hover:-translate-y-0.5"
             >
               Launch
             </a>
           </div>
         </header>
+
         <WalletProvider>{children}</WalletProvider>
       </body>
     </html>

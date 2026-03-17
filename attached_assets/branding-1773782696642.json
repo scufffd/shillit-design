@@ -1,0 +1,155 @@
+{
+  "colorScheme": "dark",
+  "fonts": [
+    {
+      "family": "Apple Color Emoji",
+      "role": "unknown"
+    },
+    {
+      "family": "Segoe UI Emoji",
+      "role": "unknown"
+    },
+    {
+      "family": "Segoe UI Symbol",
+      "role": "unknown"
+    },
+    {
+      "family": "Noto Color Emoji",
+      "role": "unknown"
+    }
+  ],
+  "colors": {
+    "primary": "#BFFF00",
+    "accent": "#00F0FF",
+    "background": "#0A0A0A",
+    "textPrimary": "#FAFAFA",
+    "link": "#00F0FF"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Apple Color Emoji",
+      "heading": "Apple Color Emoji"
+    },
+    "fontStacks": {
+      "heading": [
+        "ui-sans-serif",
+        "system-ui",
+        "sans-serif",
+        "Apple Color Emoji",
+        "Segoe UI Emoji",
+        "Segoe UI Symbol",
+        "Noto Color Emoji"
+      ],
+      "body": [
+        "ui-sans-serif",
+        "system-ui",
+        "sans-serif",
+        "Apple Color Emoji",
+        "Segoe UI Emoji",
+        "Segoe UI Symbol",
+        "Noto Color Emoji"
+      ],
+      "paragraph": [
+        "ui-sans-serif",
+        "system-ui",
+        "sans-serif",
+        "Apple Color Emoji",
+        "Segoe UI Emoji",
+        "Segoe UI Symbol",
+        "Noto Color Emoji"
+      ]
+    },
+    "fontSizes": {
+      "h1": "16px",
+      "h2": "60px",
+      "body": "20px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "8px"
+  },
+  "components": {
+    "buttonPrimary": {
+      "background": "#BFFF00",
+      "textColor": "#0A0A0A",
+      "borderColor": "#0A0A0A",
+      "borderRadius": "16px",
+      "borderRadiusCorners": {
+        "topLeft": "16px",
+        "topRight": "16px",
+        "bottomRight": "16px",
+        "bottomLeft": "16px"
+      },
+      "shadow": "rgb(10, 10, 10) 4px 4px 0px 0px"
+    },
+    "buttonSecondary": {
+      "background": "#00F0FF",
+      "textColor": "#000000",
+      "borderRadius": "16px",
+      "borderRadiusCorners": {
+        "topLeft": "16px",
+        "topRight": "16px",
+        "bottomRight": "16px",
+        "bottomLeft": "16px"
+      },
+      "shadow": "rgba(0, 240, 255, 0.5) 0px 0px 30px 0px"
+    }
+  },
+  "images": {
+    "logo": "https://slapp.gg/slapp-logo.png",
+    "favicon": "https://slapp.gg/favicon.ico?favicon.93c08a3a.ico",
+    "ogImage": "https://slapp.gg/og-image.png",
+    "logoHref": "File saved at: attached_assets/logoHref.html",
+    "logoAlt": "SLAPP"
+  },
+  "__llm_logo_reasoning": {
+    "selectedIndex": 1,
+    "reasoning": "Selected #1 because it is visible, large, located in the header, and links to the homepage. It matches the brand name 'SLAPP'.",
+    "confidence": 0.9,
+    "source": "llm"
+  },
+  "__llm_button_reasoning": {
+    "primary": {
+      "index": 9,
+      "text": "SEE IT IN ACTION",
+      "reasoning": "Button #9 has a vibrant green background (#BFFF00), which is a brand color and stands out as a primary call-to-action with the text 'SEE IT IN ACTION'."
+    },
+    "secondary": {
+      "index": 10,
+      "text": "GENERATE",
+      "reasoning": "Button #10 has a vibrant blue background (#00F0FF), which is different from the primary button's color and serves as a secondary action with the text 'GENERATE'."
+    },
+    "confidence": 0.95
+  },
+  "personality": {
+    "tone": "playful",
+    "energy": "high",
+    "targetAudience": "gamers and digital creators"
+  },
+  "designSystem": {
+    "framework": "tailwind",
+    "componentLibrary": ""
+  },
+  "confidence": {
+    "buttons": 0.95,
+    "colors": 0.9,
+    "overall": 0.925
+  },
+  "__llm_metadata": {
+    "logoSelection": {
+      "llmCalled": true,
+      "llmSucceeded": true,
+      "finalSource": "llm",
+      "rawLogoSelection": {
+        "selectedLogoIndex": 1,
+        "selectedLogoReasoning": "Selected #1 because it is visible, large, located in the header, and links to the homepage. It matches the brand name 'SLAPP'.",
+        "confidence": 0.9
+      }
+    },
+    "buttonClassification": {
+      "llmCalled": true,
+      "llmSucceeded": true
+    }
+  }
+}
