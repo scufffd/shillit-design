@@ -46,6 +46,14 @@ Copy `.env.example` to `.env` and fill in the values. Key variables:
 - **Default (local)**: SQLite at `.data/shillit.db` — no config needed
 - **Production**: Set `USE_SUPABASE=1` + `NEXT_PUBLIC_SUPABASE_URL` + `SUPABASE_SERVICE_ROLE_KEY`
 
+## Design System (shillz.app aesthetic)
+
+Applied full shillz.app terminal/hacker redesign:
+- **Fonts**: `Orbitron` (display headings) + `Space Mono` (body/mono — default sans)
+- **Colors**: bg `#1d1d1d`, card `#1a1a1a`, accent `#bdfe00` (lime), border `#2a2a2a`, text `#e0dfe3`
+- **Style**: Terminal/cyberpunk — `>` prompt prefix, `_` blinking cursor, block-blink animation, uppercase Orbitron headings, sharp (non-rounded) borders, charcoal dark background
+- **GitHub**: Synced to `github.com/scufffd/shillit-design` (public)
+
 ## Replit Migration Notes
 
 - Updated `apps/web` dev/start scripts to use `-p 5000 -H 0.0.0.0`

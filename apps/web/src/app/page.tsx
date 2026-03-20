@@ -1,15 +1,22 @@
 export default function Home() {
-  const MARQUEE_WORDS = ["Launch", "·", "Shill", "·", "Earn", "·", "Repeat", "·"];
+  const MARQUEE_WORDS = [
+    "LAUNCH TOKEN", "//", "SET FEE SPLIT", "//", "RUN CAMPAIGNS", "//",
+    "BAGWORK EARNINGS", "//", "METEORA DBC", "//", "SOLANA", "//",
+  ];
+
+  const BLOCK_COUNT = 16;
 
   return (
     <>
       {/* ── Marquee strip ── */}
-      <section className="relative overflow-hidden border-b border-[#222] bg-[#060606] py-2.5 pt-[68px]">
-        <div className="flex w-max animate-marquee gap-10 whitespace-nowrap text-[11px] font-black uppercase tracking-[0.4em] text-shill-lime">
-          {[...Array(6)].map((_, i) => (
-            <span key={i} className="flex shrink-0 gap-10">
+      <section className="relative overflow-hidden border-b border-shill-line bg-shill-darker pt-[52px]">
+        <div className="flex w-max animate-marquee gap-12 whitespace-nowrap py-2.5 text-[9px] font-bold uppercase tracking-[0.35em] font-mono">
+          {[...Array(5)].map((_, i) => (
+            <span key={i} className="flex shrink-0 gap-12">
               {MARQUEE_WORDS.map((w, j) => (
-                <span key={j} className={w === "·" ? "text-[#444]" : ""}>{w}</span>
+                <span key={j} className={w === "//" ? "text-shill-line" : "text-shill-accent"}>
+                  {w}
+                </span>
               ))}
             </span>
           ))}
@@ -17,75 +24,93 @@ export default function Home() {
       </section>
 
       {/* ── Hero ── */}
-      <section className="relative min-h-[90vh] overflow-hidden bg-[#060606]">
+      <section className="relative overflow-hidden bg-shill-darker">
+        {/* Subtle scan line */}
+        <div className="pointer-events-none absolute inset-0 overflow-hidden opacity-[0.02]">
+          <div
+            className="absolute left-0 right-0 h-px bg-shill-accent"
+            style={{ animation: "scanline 8s linear infinite" }}
+          />
+        </div>
+
         {/* Grid background */}
         <div
-          className="absolute inset-0"
+          className="absolute inset-0 opacity-[0.04]"
           style={{
-            backgroundImage: `linear-gradient(rgba(191,255,0,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(191,255,0,0.03) 1px, transparent 1px)`,
-            backgroundSize: "60px 60px",
+            backgroundImage: `linear-gradient(#bdfe00 1px, transparent 1px), linear-gradient(90deg, #bdfe00 1px, transparent 1px)`,
+            backgroundSize: "40px 40px",
           }}
         />
-        {/* Radial glow center */}
-        <div
-          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[800px] rounded-full opacity-10 blur-[120px]"
-          style={{ background: "radial-gradient(ellipse, #BFFF00 0%, transparent 70%)" }}
-        />
 
-        <div className="relative mx-auto max-w-5xl px-6 pt-28 pb-28 text-center">
-          <div className="mb-6 inline-flex items-center gap-2 rounded-2xl border border-shill-lime/30 bg-shill-lime/5 px-4 py-2">
-            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-shill-lime" />
-            <span className="text-[11px] font-black uppercase tracking-widest text-shill-lime">
-              Memecoin Launchpad · Powered by Meteora DBC
+        <div className="relative mx-auto max-w-5xl px-6 pt-24 pb-20 sm:pt-28 sm:pb-24">
+          {/* Terminal badge */}
+          <div className="mb-8 inline-flex items-center gap-3 border border-shill-line bg-shill-card px-4 py-2.5 font-mono">
+            <span className="text-shill-accent text-[11px] font-bold">&#62;</span>
+            <span className="text-[10px] uppercase tracking-widest text-shill-text/70">
+              memecoin launchpad · meteora dbc · solana
             </span>
+            <span className="animate-blink text-shill-accent text-[11px] font-bold">_</span>
           </div>
 
-          <h1 className="font-display text-5xl font-black leading-[0.95] tracking-tight text-white sm:text-6xl md:text-7xl lg:text-8xl">
+          <h1 className="font-display text-5xl font-black uppercase leading-[0.9] tracking-tight text-white sm:text-6xl md:text-7xl lg:text-[5.5rem]">
             <span className="block">Launch</span>
             <span className="block">memecoins</span>
-            <span className="block text-shill-lime">that shill.</span>
+            <span className="block text-shill-accent">that shill.</span>
           </h1>
 
-          <p className="mt-8 mx-auto max-w-lg text-base text-[#888] sm:text-lg">
+          <p className="mt-7 max-w-md font-mono text-sm text-shill-muted sm:text-base">
             One token per image. Set your split. Run bagwork campaigns. Get paid on every trade.
           </p>
 
-          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          {/* Block loader decoration */}
+          <div className="mt-8 flex gap-[3px]">
+            {Array.from({ length: BLOCK_COUNT }).map((_, i) => (
+              <div
+                key={i}
+                className="h-2 flex-1 bg-shill-accent"
+                style={{
+                  animation: `blockBlink 1.2s ease-in-out infinite`,
+                  animationDelay: `${i * 75}ms`,
+                }}
+              />
+            ))}
+          </div>
+
+          <div className="mt-8 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
             <a
               href="/launch"
-              className="inline-flex items-center gap-2 rounded-2xl bg-shill-lime px-8 py-4 text-sm font-black uppercase tracking-widest text-[#0A0A0A] shadow-hard transition hover:shadow-glow-lime hover:-translate-y-0.5"
+              className="inline-flex items-center gap-2 border border-shill-accent bg-shill-accent px-7 py-3.5 text-[11px] font-black uppercase tracking-widest text-black font-mono transition hover:shadow-glow-accent hover:-translate-y-px active:translate-y-0"
             >
-              🚀 Launch token
+              &#62;_ Launch token
             </a>
             <a
               href="/campaigns"
-              className="inline-flex items-center gap-2 rounded-2xl border border-shill-cyan bg-shill-cyan/10 px-8 py-4 text-sm font-black uppercase tracking-widest text-shill-cyan shadow-hard-cyan transition hover:shadow-glow-cyan hover:-translate-y-0.5"
+              className="inline-flex items-center gap-2 border border-shill-line bg-transparent px-7 py-3.5 text-[11px] font-black uppercase tracking-widest text-shill-text/70 font-mono transition hover:border-shill-accent/50 hover:text-shill-accent hover:-translate-y-px active:translate-y-0"
             >
               Browse campaigns
             </a>
           </div>
 
-          {/* Flow pills */}
-          <div className="mt-16 flex flex-wrap items-center justify-center gap-3 text-sm">
+          {/* Flow steps */}
+          <div className="mt-12 flex flex-wrap items-center gap-2 font-mono text-[10px]">
             {[
-              { label: "🖼 Upload image", color: "lime" },
-              { label: "→", color: "muted" },
-              { label: "🪙 Token live", color: "lime" },
-              { label: "→", color: "muted" },
-              { label: "💸 Set split", color: "cyan" },
-              { label: "→", color: "muted" },
-              { label: "📣 Campaigns", color: "cyan" },
-              { label: "→", color: "muted" },
-              { label: "💰 Earn", color: "lime" },
+              { label: "Upload image", accent: true },
+              { label: "→", accent: false, sep: true },
+              { label: "Token deployed", accent: true },
+              { label: "→", accent: false, sep: true },
+              { label: "Set split %", accent: true },
+              { label: "→", accent: false, sep: true },
+              { label: "Run campaigns", accent: true },
+              { label: "→", accent: false, sep: true },
+              { label: "Earn forever", accent: true },
             ].map((item, i) =>
-              item.color === "muted" ? (
-                <span key={i} className="text-[#444] font-bold">{item.label}</span>
-              ) : item.color === "lime" ? (
-                <span key={i} className="rounded-xl border border-shill-lime/40 bg-shill-lime/10 px-4 py-2 font-bold text-shill-lime">
-                  {item.label}
-                </span>
+              item.sep ? (
+                <span key={i} className="text-shill-dim font-bold">{item.label}</span>
               ) : (
-                <span key={i} className="rounded-xl border border-shill-cyan/40 bg-shill-cyan/10 px-4 py-2 font-bold text-shill-cyan">
+                <span
+                  key={i}
+                  className="border border-shill-accent/30 bg-shill-accent/5 px-3 py-1.5 uppercase tracking-widest text-shill-accent"
+                >
                   {item.label}
                 </span>
               )
@@ -94,148 +119,121 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── 4 Steps ── */}
-      <section className="border-t border-[#222] bg-[#0A0A0A] py-20">
+      {/* ── How it works ── */}
+      <section id="how" className="border-t border-shill-line bg-shill-bg py-20">
         <div className="mx-auto max-w-6xl px-6">
-          <p className="mb-3 text-center text-[11px] font-black uppercase tracking-widest text-shill-lime">
-            How it works
-          </p>
-          <h2 className="text-center font-display text-3xl font-black tracking-tight text-white sm:text-4xl">
+          <div className="mb-3 flex items-center gap-2 font-mono">
+            <span className="text-shill-accent text-[11px] font-bold">&#62;</span>
+            <span className="text-[10px] uppercase tracking-widest text-shill-accent">How it works</span>
+          </div>
+          <h2 className="font-display text-3xl font-black uppercase tracking-tight text-white sm:text-4xl">
             Four steps to the moon.
           </h2>
 
-          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-12 grid gap-px border border-shill-line sm:grid-cols-2 lg:grid-cols-4">
             {[
-              {
-                n: "01",
-                title: "Create deployer profile",
-                body: "One-time fee. Rank on the leaderboard.",
-                color: "lime",
-              },
-              {
-                n: "02",
-                title: "Launch on Meteora DBC",
-                body: "Upload image, set token name & split.",
-                color: "cyan",
-              },
-              {
-                n: "03",
-                title: "Set campaigns & guidelines",
-                body: "Pay per 1K views, cap, rules.",
-                color: "lime",
-              },
-              {
-                n: "04",
-                title: "Bagworkers get paid",
-                body: "Submit, approve, pay from dashboard.",
-                color: "cyan",
-              },
-            ].map((step) => (
+              { n: "01", title: "Deployer profile", body: "One-time fee. Rank on the leaderboard." },
+              { n: "02", title: "Launch on Meteora", body: "Upload image, set token name & split." },
+              { n: "03", title: "Set campaigns", body: "Pay per 1K views, cap budget, rules." },
+              { n: "04", title: "Bagworkers paid", body: "Submit, approve, pay from dashboard." },
+            ].map((step, i) => (
               <div
                 key={step.n}
-                className={`group rounded-2xl border ${
-                  step.color === "lime"
-                    ? "border-shill-lime/20 hover:border-shill-lime/60 hover:shadow-glow-lime"
-                    : "border-shill-cyan/20 hover:border-shill-cyan/60 hover:shadow-glow-cyan"
-                } bg-[#111] p-6 transition`}
+                className="group border-r border-shill-line bg-shill-card p-6 transition last:border-r-0 hover:bg-shill-surface"
               >
-                <span
-                  className={`text-5xl font-black leading-none ${
-                    step.color === "lime" ? "text-shill-lime" : "text-shill-cyan"
-                  } opacity-40 group-hover:opacity-80 transition`}
-                >
+                <span className="font-mono text-3xl font-black leading-none text-shill-accent/30 group-hover:text-shill-accent transition">
                   {step.n}
                 </span>
-                <h3 className="mt-3 font-bold text-white">{step.title}</h3>
-                <p className="mt-1 text-sm text-[#888]">{step.body}</p>
+                <h3 className="mt-3 font-display text-xs font-black uppercase tracking-widest text-white">{step.title}</h3>
+                <p className="mt-2 font-mono text-xs text-shill-muted">{step.body}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── Try It ── */}
-      <section id="how" className="border-t border-[#222] bg-[#060606] py-20">
-        <div className="mx-auto max-w-3xl px-6 text-center">
-          <p className="mb-3 text-[11px] font-black uppercase tracking-widest text-shill-lime">Try it</p>
-          <h2 className="font-display text-3xl font-black tracking-tight text-white sm:text-4xl">
+      {/* ── Try it ── */}
+      <section className="border-t border-shill-line bg-shill-darker py-20">
+        <div className="mx-auto max-w-3xl px-6">
+          <div className="mb-3 flex items-center gap-2 font-mono">
+            <span className="text-shill-accent text-[11px] font-bold">&#62;</span>
+            <span className="text-[10px] uppercase tracking-widest text-shill-accent">Try it</span>
+          </div>
+          <h2 className="font-display text-3xl font-black uppercase tracking-tight text-white sm:text-4xl">
             One flow. Token live.
           </h2>
-          <p className="mt-4 text-[#888]">Launch your memecoin in minutes.</p>
+          <p className="mt-3 font-mono text-sm text-shill-muted">Launch your memecoin in minutes.</p>
 
-          <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-            <div className="flex-1 max-w-sm rounded-2xl border border-[#222] bg-[#111] px-5 py-4 text-left text-sm text-[#888]">
-              <span className="text-[#555] text-xs uppercase tracking-widest block mb-1">Token name</span>
-              <span className="text-white font-bold">SHILLIT on Meteora DBC</span>
+          <div className="mt-8 border border-shill-line bg-shill-card p-1">
+            <div className="border-b border-shill-line px-4 py-2 flex items-center gap-2">
+              <span className="text-shill-accent font-mono text-[10px] font-bold">&#62;_</span>
+              <span className="font-mono text-[10px] uppercase tracking-widest text-shill-muted">terminal</span>
+              <span className="ml-auto animate-blink text-shill-accent font-mono text-[10px]">▌</span>
             </div>
-            <a
-              href="/launch"
-              className="shrink-0 rounded-2xl bg-shill-lime px-8 py-4 text-sm font-black uppercase tracking-widest text-[#0A0A0A] shadow-hard transition hover:shadow-glow-lime hover:-translate-y-0.5"
-            >
-              Launch now
-            </a>
+            <div className="flex flex-col gap-3 p-4 sm:flex-row sm:items-center">
+              <div className="flex-1 font-mono">
+                <span className="text-[9px] uppercase tracking-widest text-shill-dim block mb-1">Token name</span>
+                <span className="text-sm font-bold text-white">SHILLIT on Meteora DBC</span>
+                <span className="animate-blink text-shill-accent font-bold ml-0.5">_</span>
+              </div>
+              <a
+                href="/launch"
+                className="shrink-0 border border-shill-accent bg-shill-accent px-7 py-3 text-[10px] font-black uppercase tracking-widest text-black font-mono transition hover:shadow-glow-accent hover:-translate-y-px"
+              >
+                &#62;_ Launch now
+              </a>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ── Platform Cards ── */}
-      <section className="border-t border-[#222] bg-[#0A0A0A] py-20">
+      {/* ── Platform ── */}
+      <section className="border-t border-shill-line bg-shill-bg py-20">
         <div className="mx-auto max-w-5xl px-6">
-          <p className="mb-3 text-center text-[11px] font-black uppercase tracking-widest text-shill-lime">Platform</p>
-          <h2 className="text-center font-display text-3xl font-black tracking-tight text-white sm:text-4xl">
+          <div className="mb-3 flex items-center gap-2 font-mono">
+            <span className="text-shill-accent text-[11px] font-bold">&#62;</span>
+            <span className="text-[10px] uppercase tracking-widest text-shill-accent">Platform</span>
+          </div>
+          <h2 className="font-display text-3xl font-black uppercase tracking-tight text-white sm:text-4xl">
             One platform. Every step.
           </h2>
-          <p className="mt-3 text-center text-[#888]">
-            From launch to campaigns to holder rewards.
-          </p>
+          <p className="mt-3 font-mono text-sm text-shill-muted">From launch to campaigns to holder rewards.</p>
 
-          <div className="mt-14 grid gap-5 sm:grid-cols-3">
+          <div className="mt-10 grid gap-px border border-shill-line sm:grid-cols-3">
             {[
               {
                 href: "/launch",
                 label: "Launch",
-                icon: "🚀",
-                body: "Create token on Meteora DBC, set your fee split.",
-                color: "lime",
+                tag: "01",
+                body: "Deploy token on Meteora DBC. Set your fee split once, tweak anytime.",
               },
               {
                 href: "/campaigns",
                 label: "Campaigns",
-                icon: "📣",
-                body: "Guidelines, pay per 1K views, fund & go live.",
-                color: "cyan",
+                tag: "02",
+                body: "Pay per 1K views. Guidelines, caps, and auto-payouts for shillers.",
               },
               {
                 href: "/dashboard",
                 label: "Dashboard",
-                icon: "📊",
-                body: "Run rewards, approve payouts, track tokens.",
-                color: "lime",
+                tag: "03",
+                body: "Approve payouts. Run holder rewards. Track every token you deployed.",
               },
             ].map((card) => (
               <a
                 key={card.label}
                 href={card.href}
-                className={`group flex flex-col rounded-2xl border ${
-                  card.color === "lime"
-                    ? "border-shill-lime/20 hover:border-shill-lime/60 hover:shadow-glow-lime"
-                    : "border-shill-cyan/20 hover:border-shill-cyan/60 hover:shadow-glow-cyan"
-                } bg-[#111] p-7 transition`}
+                className="group flex flex-col border-r border-shill-line bg-shill-card p-7 transition last:border-r-0 hover:bg-shill-surface"
               >
-                <span className="text-3xl">{card.icon}</span>
-                <h3
-                  className={`mt-4 text-lg font-black uppercase tracking-wide ${
-                    card.color === "lime" ? "text-shill-lime" : "text-shill-cyan"
-                  }`}
-                >
+                <div className="flex items-center justify-between">
+                  <span className="font-mono text-[9px] uppercase tracking-widest text-shill-dim">{card.tag}</span>
+                  <span className="font-mono text-[9px] text-shill-dim group-hover:text-shill-accent transition">&#62;_</span>
+                </div>
+                <h3 className="mt-5 font-display text-sm font-black uppercase tracking-widest text-shill-accent">
                   {card.label}
                 </h3>
-                <p className="mt-2 text-sm text-[#888] flex-1">{card.body}</p>
-                <span
-                  className={`mt-5 self-start text-xs font-black uppercase tracking-widest ${
-                    card.color === "lime" ? "text-shill-lime" : "text-shill-cyan"
-                  }`}
-                >
+                <p className="mt-2 font-mono text-xs text-shill-muted flex-1">{card.body}</p>
+                <span className="mt-5 font-mono text-[9px] uppercase tracking-widest text-shill-dim group-hover:text-shill-accent transition">
                   Explore →
                 </span>
               </a>
@@ -244,110 +242,111 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Earn Section ── */}
-      <section className="border-t border-[#222] bg-[#060606] py-20">
+      {/* ── Earn / Revenue ── */}
+      <section className="border-t border-shill-line bg-shill-darker py-20">
         <div className="mx-auto max-w-4xl px-6">
-          <p className="mb-3 text-center text-[11px] font-black uppercase tracking-widest text-shill-cyan">Revenue</p>
-          <h2 className="text-center font-display text-3xl font-black tracking-tight text-white sm:text-4xl">
+          <div className="mb-3 flex items-center gap-2 font-mono">
+            <span className="text-shill-accent text-[11px] font-bold">&#62;</span>
+            <span className="text-[10px] uppercase tracking-widest text-shill-accent">Revenue</span>
+          </div>
+          <h2 className="font-display text-3xl font-black uppercase tracking-tight text-white sm:text-4xl">
             Tokenize. Earn forever.
           </h2>
-          <p className="mt-3 text-center text-[#888]">
-            Every trade generates revenue. You set the split.
-          </p>
+          <p className="mt-3 font-mono text-sm text-shill-muted">Every trade generates revenue. You set the split.</p>
 
-          <div className="mt-12 rounded-2xl border border-shill-lime/20 bg-[#111] p-8">
-            <div className="flex flex-wrap items-start justify-between gap-8">
-              <div>
-                <p className="text-[11px] font-black uppercase tracking-widest text-shill-lime">Your token</p>
-                <p className="mt-2 text-2xl font-black text-white">Set your split</p>
-                <p className="mt-1 text-sm text-[#888]">Creator · Buys · Burns · LP · Holders</p>
+          <div className="mt-8 border border-shill-line bg-shill-card">
+            {/* Header bar */}
+            <div className="flex items-center justify-between border-b border-shill-line px-6 py-3">
+              <div className="flex items-center gap-2 font-mono">
+                <span className="text-shill-accent text-[10px] font-bold">&#62;</span>
+                <span className="text-[10px] uppercase tracking-widest text-shill-text/60">fee.split.config</span>
               </div>
-              <div className="flex gap-8 text-center">
-                <div>
-                  <p className="text-[10px] uppercase tracking-widest text-[#555]">Trading fees</p>
-                  <p className="mt-1 text-xl font-black text-shill-lime">You earn</p>
-                </div>
-                <div>
-                  <p className="text-[10px] uppercase tracking-widest text-[#555]">Holders</p>
-                  <p className="mt-1 text-xl font-black text-shill-cyan">Claim share</p>
-                </div>
-              </div>
+              <span className="animate-blink text-shill-accent font-mono text-[10px]">▌</span>
             </div>
 
-            <div className="mt-8 grid gap-4 sm:grid-cols-3">
-              {[
-                {
-                  title: "Earn on every trade",
-                  body: "Automatic. Perpetual. Your split.",
-                  color: "lime",
-                },
-                {
-                  title: "Holder rewards",
-                  body: "Claim from vault or push. Your choice.",
-                  color: "cyan",
-                },
-                {
-                  title: "Bagwork campaigns",
-                  body: "Pay shillers by performance.",
-                  color: "lime",
-                },
-              ].map((card) => (
-                <div
-                  key={card.title}
-                  className={`rounded-xl border ${
-                    card.color === "lime" ? "border-shill-lime/20" : "border-shill-cyan/20"
-                  } bg-[#0A0A0A] p-5`}
-                >
-                  <h4 className={`font-black ${card.color === "lime" ? "text-shill-lime" : "text-shill-cyan"}`}>
-                    {card.title}
-                  </h4>
-                  <p className="mt-1 text-sm text-[#888]">{card.body}</p>
+            <div className="p-6 sm:p-8">
+              <div className="flex flex-wrap items-start justify-between gap-6">
+                <div>
+                  <p className="font-mono text-[9px] uppercase tracking-widest text-shill-accent">Your token</p>
+                  <p className="mt-2 font-display text-xl font-black text-white">Set your split</p>
+                  <p className="mt-1 font-mono text-xs text-shill-muted">Creator · Buys · Burns · LP · Holders</p>
                 </div>
-              ))}
-            </div>
+                <div className="flex gap-6 font-mono text-center">
+                  <div className="border border-shill-line bg-shill-bg px-4 py-3">
+                    <p className="text-[9px] uppercase tracking-widest text-shill-dim">Trading fees</p>
+                    <p className="mt-1 text-sm font-bold text-shill-accent">You earn</p>
+                  </div>
+                  <div className="border border-shill-line bg-shill-bg px-4 py-3">
+                    <p className="text-[9px] uppercase tracking-widest text-shill-dim">Holders</p>
+                    <p className="mt-1 text-sm font-bold text-white">Claim share</p>
+                  </div>
+                </div>
+              </div>
 
-            <p className="mt-6 text-center text-[11px] uppercase tracking-widest text-[#555]">
-              Powered by Meteora DBC on Solana
-            </p>
+              <div className="mt-8 grid gap-px border border-shill-line sm:grid-cols-3">
+                {[
+                  { title: "Earn on every trade", body: "Automatic. Perpetual. Your split forever." },
+                  { title: "Holder rewards", body: "Claim from vault or push-to-holder. Your choice." },
+                  { title: "Bagwork campaigns", body: "Pay shillers by performance. Per 1K views." },
+                ].map((card) => (
+                  <div
+                    key={card.title}
+                    className="border-r border-shill-line bg-shill-bg p-5 last:border-r-0"
+                  >
+                    <h4 className="font-display text-xs font-black uppercase tracking-widest text-shill-accent">
+                      {card.title}
+                    </h4>
+                    <p className="mt-2 font-mono text-xs text-shill-muted">{card.body}</p>
+                  </div>
+                ))}
+              </div>
+
+              <p className="mt-5 font-mono text-[9px] uppercase tracking-widest text-shill-dim text-center">
+                Powered by Meteora DBC · Solana
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ── Splits Grid ── */}
-      <section className="border-t border-[#222] bg-[#0A0A0A] py-20">
+      {/* ── Splits control ── */}
+      <section className="border-t border-shill-line bg-shill-bg py-20">
         <div className="mx-auto max-w-5xl px-6">
-          <p className="mb-3 text-center text-[11px] font-black uppercase tracking-widest text-shill-lime">Control</p>
-          <h2 className="text-center font-display text-3xl font-black tracking-tight text-white sm:text-4xl">
+          <div className="mb-3 flex items-center gap-2 font-mono">
+            <span className="text-shill-accent text-[11px] font-bold">&#62;</span>
+            <span className="text-[10px] uppercase tracking-widest text-shill-accent">Control</span>
+          </div>
+          <h2 className="font-display text-3xl font-black uppercase tracking-tight text-white sm:text-4xl">
             One token. Full control.
           </h2>
-          <p className="mt-3 text-center text-[#888]">Set your split once, tweak anytime in the dashboard.</p>
+          <p className="mt-3 font-mono text-sm text-shill-muted">Set your split once, tweak anytime in the dashboard.</p>
 
-          <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
+          <div className="mt-10 grid grid-cols-2 gap-px border border-shill-line sm:grid-cols-3 lg:grid-cols-6">
             {[
-              { label: "Creator %", icon: "🎨" },
-              { label: "Buybacks", icon: "🔄" },
-              { label: "Burns", icon: "🔥" },
-              { label: "LP", icon: "💧" },
-              { label: "Holders", icon: "🏆" },
-              { label: "Campaigns", icon: "📣" },
+              { label: "Creator %", code: "01" },
+              { label: "Buybacks", code: "02" },
+              { label: "Burns", code: "03" },
+              { label: "LP", code: "04" },
+              { label: "Holders", code: "05" },
+              { label: "Campaigns", code: "06" },
             ].map((item) => (
               <div
                 key={item.label}
-                className="group flex flex-col items-center justify-center gap-2 rounded-2xl border border-[#222] bg-[#111] p-6 text-center transition hover:border-shill-lime/50 hover:shadow-glow-lime"
+                className="group flex flex-col items-center justify-center gap-2 border-r border-b border-shill-line bg-shill-card px-4 py-6 text-center transition last:border-r-0 hover:bg-shill-surface"
               >
-                <span className="text-2xl">{item.icon}</span>
-                <span className="text-xs font-black uppercase tracking-wide text-[#888] group-hover:text-shill-lime transition">
+                <span className="font-mono text-[9px] uppercase tracking-widest text-shill-dim">{item.code}</span>
+                <span className="font-display text-[10px] font-black uppercase tracking-widest text-shill-muted group-hover:text-shill-accent transition">
                   {item.label}
                 </span>
               </div>
             ))}
           </div>
 
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+          <div className="mt-5 flex flex-wrap items-center gap-2">
             {["Set split %", "Edit campaign", "Run rewards", "Claim fees", "Leaderboard", "CTO"].map((t) => (
               <span
                 key={t}
-                className="rounded-xl border border-[#333] bg-[#111] px-4 py-2 text-xs font-bold uppercase tracking-widest text-[#888] hover:border-shill-lime/40 hover:text-shill-lime transition cursor-default"
+                className="border border-shill-line bg-shill-card px-3 py-1.5 font-mono text-[9px] uppercase tracking-widest text-shill-dim transition hover:border-shill-accent/40 hover:text-shill-accent cursor-default"
               >
                 {t}
               </span>
@@ -357,30 +356,60 @@ export default function Home() {
       </section>
 
       {/* ── Final CTA ── */}
-      <section className="relative overflow-hidden border-t border-[#222] bg-[#060606] py-28">
+      <section className="relative overflow-hidden border-t border-shill-line bg-shill-darker py-28">
+        {/* Grid bg */}
         <div
-          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[400px] w-[600px] rounded-full opacity-10 blur-[100px]"
-          style={{ background: "radial-gradient(ellipse, #BFFF00 0%, transparent 70%)" }}
+          className="absolute inset-0 opacity-[0.035]"
+          style={{
+            backgroundImage: `linear-gradient(#bdfe00 1px, transparent 1px), linear-gradient(90deg, #bdfe00 1px, transparent 1px)`,
+            backgroundSize: "40px 40px",
+          }}
         />
+        {/* Glow */}
+        <div
+          className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[400px] w-[700px] rounded-full blur-[120px]"
+          style={{ background: "radial-gradient(ellipse, rgba(189,254,0,0.12) 0%, transparent 70%)" }}
+        />
+
         <div className="relative mx-auto max-w-2xl px-6 text-center">
-          <p className="mb-4 text-[11px] font-black uppercase tracking-widest text-shill-lime">Ready?</p>
-          <h2 className="font-display text-4xl font-black tracking-tight text-white sm:text-5xl lg:text-6xl">
+          <div className="mb-6 inline-flex items-center gap-3 border border-shill-line bg-shill-card px-4 py-2.5 font-mono">
+            <span className="text-shill-accent font-bold text-[11px]">&#62;</span>
+            <span className="text-[10px] uppercase tracking-widest text-shill-text/60">ready to launch</span>
+            <span className="animate-blink text-shill-accent text-[11px] font-bold">_</span>
+          </div>
+
+          <h2 className="font-display text-4xl font-black uppercase tracking-tight text-white sm:text-5xl lg:text-6xl">
             Launch your<br />
-            <span className="text-shill-lime">memecoin.</span>
+            <span className="text-shill-accent">memecoin.</span>
           </h2>
-          <p className="mt-5 text-lg text-[#888]">
+          <p className="mt-5 font-mono text-sm text-shill-muted sm:text-base">
             Share earnings. Bagwork campaigns. Get paid on every trade.
           </p>
-          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+
+          {/* Block loader */}
+          <div className="mt-8 mx-auto max-w-xs flex gap-[3px]">
+            {Array.from({ length: 12 }).map((_, i) => (
+              <div
+                key={i}
+                className="h-1.5 flex-1 bg-shill-accent"
+                style={{
+                  animation: `blockBlink 1.2s ease-in-out infinite`,
+                  animationDelay: `${i * 100}ms`,
+                }}
+              />
+            ))}
+          </div>
+
+          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <a
               href="/launch"
-              className="rounded-2xl bg-shill-lime px-10 py-4 text-sm font-black uppercase tracking-widest text-[#0A0A0A] shadow-hard transition hover:shadow-glow-lime hover:-translate-y-0.5"
+              className="border border-shill-accent bg-shill-accent px-10 py-4 font-mono text-[11px] font-black uppercase tracking-widest text-black transition hover:shadow-glow-accent hover:-translate-y-px active:translate-y-0"
             >
-              🚀 Launch token
+              &#62;_ Launch token
             </a>
             <a
               href="/campaigns"
-              className="rounded-2xl border border-shill-cyan bg-shill-cyan/10 px-10 py-4 text-sm font-black uppercase tracking-widest text-shill-cyan shadow-hard-cyan transition hover:shadow-glow-cyan hover:-translate-y-0.5"
+              className="border border-shill-line px-10 py-4 font-mono text-[11px] font-black uppercase tracking-widest text-shill-text/60 transition hover:border-shill-accent/40 hover:text-shill-accent hover:-translate-y-px active:translate-y-0"
             >
               Browse campaigns
             </a>
@@ -389,22 +418,25 @@ export default function Home() {
       </section>
 
       {/* ── Footer ── */}
-      <footer className="border-t border-[#222] bg-[#0A0A0A] py-10">
+      <footer className="border-t border-shill-line bg-shill-bg py-8">
         <div className="mx-auto max-w-5xl px-6 flex flex-wrap items-center justify-between gap-6">
-          <a href="/" className="flex items-center gap-2.5">
-            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-shill-lime text-[#0A0A0A] text-base shadow-hard">🚀</span>
-            <span className="font-black uppercase text-white">
-              Shill<span className="text-shill-lime">It</span>
+          <a href="/" className="flex items-center gap-2">
+            <span className="font-mono text-shill-accent text-[11px] font-bold">&#62;</span>
+            <span className="font-display text-xs font-black uppercase tracking-widest text-white">
+              SHILL<span className="text-shill-accent">IT</span>
             </span>
+            <span className="animate-blink font-mono text-shill-accent text-[11px] font-bold">_</span>
           </a>
-          <nav className="flex flex-wrap gap-6 text-[11px] font-bold uppercase tracking-widest text-[#555]">
-            <a href="/#how" className="transition hover:text-white">How it works</a>
-            <a href="/campaigns" className="transition hover:text-white">Campaigns</a>
-            <a href="/leaderboard" className="transition hover:text-white">Leaderboard</a>
-            <a href="/dashboard" className="transition hover:text-white">Dashboard</a>
-            <a href="/deployer" className="transition hover:text-white">Deployer</a>
+          <nav className="flex flex-wrap gap-5 font-mono text-[9px] uppercase tracking-widest text-shill-dim">
+            <a href="/#how" className="transition hover:text-shill-accent">How it works</a>
+            <a href="/campaigns" className="transition hover:text-shill-accent">Campaigns</a>
+            <a href="/leaderboard" className="transition hover:text-shill-accent">Leaderboard</a>
+            <a href="/dashboard" className="transition hover:text-shill-accent">Dashboard</a>
+            <a href="/deployer" className="transition hover:text-shill-accent">Deployer</a>
           </nav>
-          <p className="text-[11px] uppercase tracking-widest text-[#555]">© Shill It · Solana</p>
+          <p className="font-mono text-[9px] uppercase tracking-widest text-shill-dim">
+            © Shill It · Solana
+          </p>
         </div>
       </footer>
     </>

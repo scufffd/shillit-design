@@ -2,15 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes blockBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.1; }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
 @layer base {
   :root {
-    --lime: #BFFF00;
-    --cyan: #00F0FF;
-    --bg: #0A0A0A;
-    --surface: #111111;
-    --border: #222222;
-    --muted: #888888;
-    --text: #FAFAFA;
+    --accent: #bdfe00;
+    --bg: #1d1d1d;
+    --card: #1a1a1a;
+    --line: #2a2a2a;
+    --text: #e0dfe3;
+    --muted: #666;
   }
 
   html {
@@ -19,30 +33,45 @@
   }
 
   body {
-    background-color: #0A0A0A;
-    color: #FAFAFA;
+    background-color: #1d1d1d;
+    color: #e0dfe3;
   }
 
   ::selection {
-    background-color: #BFFF00;
-    color: #0A0A0A;
+    background-color: #bdfe00;
+    color: #000;
   }
 
   ::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
+    width: 4px;
+    height: 4px;
   }
 
   ::-webkit-scrollbar-track {
-    background: #0A0A0A;
+    background: #1d1d1d;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #333;
-    border-radius: 3px;
+    background: #2a2a2a;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #BFFF00;
+    background: #bdfe00;
+  }
+}
+
+@layer utilities {
+  .terminal-prompt::before {
+    content: "> ";
+    color: #bdfe00;
+    font-weight: 700;
+  }
+
+  .animate-blink {
+    animation: blink 1s step-end infinite;
+  }
+
+  .animate-block-blink {
+    animation: blockBlink 1.2s ease-in-out infinite;
   }
 }
